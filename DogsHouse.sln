@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogsHouse.API", "DogsHouse.API\DogsHouse.API.csproj", "{075FCC3F-0635-4A62-B011-9CDCD10843DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogsHouse.API", "DogsHouse.API\DogsHouse.API.csproj", "{075FCC3F-0635-4A62-B011-9CDCD10843DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogsHouse.Core", "DogsHouse.Core\DogsHouse.Core.csproj", "{BFD5EEB9-5CBD-4070-9008-78D774BC267A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogsHouse.Core", "DogsHouse.Core\DogsHouse.Core.csproj", "{BFD5EEB9-5CBD-4070-9008-78D774BC267A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogsHouse.Infrastructure", "DogsHouse.Infrastructure\DogsHouse.Infrastructure.csproj", "{FC8558C5-72D0-48B8-B0F0-41B8CF00E203}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogsHouse.Infrastructure", "DogsHouse.Infrastructure\DogsHouse.Infrastructure.csproj", "{FC8558C5-72D0-48B8-B0F0-41B8CF00E203}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogsHouse.Tests", "DogsHouse.Tests\DogsHouse.Tests.csproj", "{E8DBEED8-A4CB-4F59-A769-1BA346815508}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogsHouse.Tests", "DogsHouse.Tests\DogsHouse.Tests.csproj", "{01BED0E6-D94C-4C8A-B97D-A8EF26E6BE01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{FC8558C5-72D0-48B8-B0F0-41B8CF00E203}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC8558C5-72D0-48B8-B0F0-41B8CF00E203}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC8558C5-72D0-48B8-B0F0-41B8CF00E203}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8DBEED8-A4CB-4F59-A769-1BA346815508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8DBEED8-A4CB-4F59-A769-1BA346815508}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8DBEED8-A4CB-4F59-A769-1BA346815508}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8DBEED8-A4CB-4F59-A769-1BA346815508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01BED0E6-D94C-4C8A-B97D-A8EF26E6BE01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01BED0E6-D94C-4C8A-B97D-A8EF26E6BE01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01BED0E6-D94C-4C8A-B97D-A8EF26E6BE01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01BED0E6-D94C-4C8A-B97D-A8EF26E6BE01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
