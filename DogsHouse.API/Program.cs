@@ -1,4 +1,5 @@
 using DogsHouse.Core.Interfaces;
+using DogsHouse.Core.Mappings;
 using DogsHouse.Core.Services;
 using DogsHouse.Infrastructure.Data;
 using DogsHouse.Infrastructure.Repositories;
@@ -10,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// Configure AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
 builder.Services.AddDbContext<DogsContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IDogRepository, DogRepository>();
