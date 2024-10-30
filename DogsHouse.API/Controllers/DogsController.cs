@@ -17,12 +17,21 @@ namespace DogsHouse.API.Controllers
             _dogService = dogService;
         }
 
+        /// <summary>
+        /// Health check endpoint returning service version
+        /// </summary>
+        /// <returns>Service version information</returns>
         [HttpGet("ping")]
         public IActionResult Ping()
         {
             return Ok("Dogshouseservice.Version1.0.1");
         }
 
+        /// <summary>
+        /// Retrieves a list of dogs based on query parameters
+        /// </summary>
+        /// <param name="parameters">Query parameters for filtering and pagination</param>
+        /// <returns>List of dogs matching the criteria</returns>
         [HttpGet("dogs")]
         public async Task<IActionResult> GetDogs([FromQuery] QueryParameters parameters)
         {
@@ -30,6 +39,13 @@ namespace DogsHouse.API.Controllers
             return Ok(dogs);
         }
 
+        /// <summary>
+        /// Creates a new dog
+        /// </summary>
+        /// <param name="dogDto">Dog creation data</param>
+        /// <returns>Created dog information</returns>
+        /// <response code="201">Returns the newly created dog</response>
+        /// <response code="400">If the dog data is invalid</response>
         [HttpPost("dog")]
         public async Task<IActionResult> CreateDog([FromBody] DogDto dogDto)
         {

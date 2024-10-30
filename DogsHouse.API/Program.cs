@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DogsContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("Host=localhost;Port=5433;Database=Queue;Username=postgres;Password=developer2023")));
+builder.Services.AddDbContext<DogsContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IDogRepository, DogRepository>();
 builder.Services.AddScoped<IDogService, DogService>();
