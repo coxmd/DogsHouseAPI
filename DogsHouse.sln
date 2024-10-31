@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogsHouse.Core", "DogsHouse
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogsHouse.Infrastructure", "DogsHouse.Infrastructure\DogsHouse.Infrastructure.csproj", "{FC8558C5-72D0-48B8-B0F0-41B8CF00E203}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogsHouse.Tests", "DogsHouse.Tests\DogsHouse.Tests.csproj", "{01BED0E6-D94C-4C8A-B97D-A8EF26E6BE01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DogsHouse.Tests", "DogsHouse.Tests\DogsHouse.Tests.csproj", "{01BED0E6-D94C-4C8A-B97D-A8EF26E6BE01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -22,7 +22,16 @@ builder.Services.AddSwaggerGen();
 // Configure AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-builder.Services.AddDbContext<DogsContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<DogsContext>(options =>
+{
+    var provider = builder.Configuration["DatabaseProvider"];
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+    if (provider == "PostgreSQL")
+        options.UseNpgsql(connectionString);
+    else
+        options.UseSqlServer(connectionString);
+});
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IDogRepository, DogRepository>();
 builder.Services.AddScoped<IDogService, DogService>();
