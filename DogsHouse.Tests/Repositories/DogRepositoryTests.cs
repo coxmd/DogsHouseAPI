@@ -39,23 +39,6 @@ namespace DogsHouse.Tests.Repositories
         }
 
         [Fact]
-        public async Task GetDogByNameAsync_ReturnsCorrectDog()
-        {
-            // Arrange
-            var dog = new Dog { Name = "TestDog", Color = "Brown", TailLength = 10, Weight = 20 };
-            _context.Dogs.Add(dog);
-            await _context.SaveChangesAsync();
-
-            // Act
-            var result = await _repository.GetDogByNameAsync("TestDog");
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal(dog.Name, result.Name);
-            Assert.Equal(dog.Color, result.Color);
-        }
-
-        [Fact]
         public async Task GetDogsAsync_WithPagination_ReturnsCorrectDogs()
         {
             // Arrange

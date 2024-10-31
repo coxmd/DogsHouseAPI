@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DogsHouse.Core.Models.ModelBinders
 {
-    public class DogDtoModelBinder
+    public class DogDtoModelBinder : IModelBinder
     {
         public async Task BindModelAsync(ModelBindingContext bindingContext)
         {

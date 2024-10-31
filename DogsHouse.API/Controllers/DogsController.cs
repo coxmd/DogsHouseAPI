@@ -49,6 +49,16 @@ namespace DogsHouse.API.Controllers
         [HttpPost("dog")]
         public async Task<IActionResult> CreateDog([FromBody] DogDto dogDto)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList();
+
+                return BadRequest(new { errors });
+            }
+
             try
             {
                 var result = await _dogService.CreateDogAsync(dogDto);
@@ -56,7 +66,7 @@ namespace DogsHouse.API.Controllers
             }
             catch (ValidationException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { error = ex.Message });
             }
         }
     }

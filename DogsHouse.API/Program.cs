@@ -1,3 +1,5 @@
+using DogsHouse.API.Configuration;
+using DogsHouse.API.Middleware;
 using DogsHouse.Core.Interfaces;
 using DogsHouse.Core.Mappings;
 using DogsHouse.Core.Services;
@@ -7,6 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Bind rate limiting settings from configuration
+var rateLimitingSettings = builder.Configuration
+    .GetSection("RateLimiting")
+    .Get<RateLimitingSettings>();
 
 // Add services to the container
 builder.Services.AddControllers();
@@ -20,7 +27,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IDogRepository, DogRepository>();
 builder.Services.AddScoped<IDogService, DogService>();
 
-// Program.cs
+// Add rate limiting
 builder.Services.AddRateLimiter(options =>
 {
     options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
@@ -29,23 +36,18 @@ builder.Services.AddRateLimiter(options =>
             factory: partition => new FixedWindowRateLimiterOptions
             {
                 AutoReplenishment = true,
-                PermitLimit = 100,
-                QueueLimit = 0,
-                Window = TimeSpan.FromMinutes(1)
+                PermitLimit = rateLimitingSettings!.PermitLimit,
+                QueueLimit = rateLimitingSettings.QueueLimit,
+                Window = TimeSpan.FromSeconds(rateLimitingSettings.Window)
             }));
 
     options.OnRejected = async (context, cancellationToken) =>
     {
-        if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfter))
-        {
-            context.HttpContext.Response.Headers.RetryAfter = retryAfter.TotalSeconds.ToString();
-        }
-
         context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
         await context.HttpContext.Response.WriteAsJsonAsync(new
         {
-            error = "Too many requests. Please try again later."
-        });
+            error = "Too many requests. Please try again later.",
+        }, cancellationToken: cancellationToken);
     };
 });
 
@@ -57,6 +59,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
+
+app.UseRateLimiter();
 
 app.UseHttpsRedirection();
 
